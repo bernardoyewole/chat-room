@@ -11,7 +11,7 @@
 }
 
 html, body {
-    height: 100%;
+    height: 100vh;
     scroll-behavior: smooth;
 }
 
@@ -20,6 +20,10 @@ body {
     line-height: 1.4;
     font-weight: 400;
     color: #2a2a2a;
+}
+
+#root {
+    height: 100%;
 }
 
 a {
