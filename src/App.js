@@ -1,16 +1,20 @@
-import ChatMenu from "./components/ChatMenu";
-import Menu from "./components/Menu";
-import Chat from "./components/Chat";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
-    <div className="bg-[#C5DCD7] h-full w-full flex justify-center items-center">
-      <div className="h-[80%] w-[70%] bg-white flex">
-        <Menu />
-        <ChatMenu />
-        <Chat />
-      </div>
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<PrivateRoute />}>
+          <Route path='/' element={<Home />} />
+        </Route>
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+      </Routes>
+    </Router>
   );
 }
 
