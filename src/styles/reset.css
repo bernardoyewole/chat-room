@@ -42,3 +42,11 @@ img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
 }
+
+input {
+    -webkit-appearance: none;
+}
+
+input:focus {
+    outline: none;
+}
