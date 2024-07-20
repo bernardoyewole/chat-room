@@ -55,7 +55,7 @@ function Login() {
                         <button type="submit" className="w-full bg-[#263238] text-white rounded-sm py-2 mt-4">Sign in</button>
                     </form>
                     <div className="create-account">
-                        <p class="mt-10 text-center text-sm text-gray-500">
+                        <p class="mt-4 text-center text-sm text-gray-500">
                             Are you new?
                             <Link class="font-semibold leading-6 text-[#34b17d] pl-2" to='/register'>Create an Account</Link>
                         </p>
