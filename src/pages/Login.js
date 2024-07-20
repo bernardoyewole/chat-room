@@ -12,7 +12,6 @@ function Login() {
         setIsPasswordVisible(!isPasswordVisible);
     }
 
-
     const onSubmit = data => {
         console.log(data);
         // Handle form submission
@@ -29,7 +28,7 @@ function Login() {
                             <input
                                 type="text"
                                 id="email"
-                                className="border-[1px] border-gray-300 rounded-sm focus:border-gray-400 py-2 px-3 transition-all duration-300 ease-out text-md"
+                                className="border-[1px] border-gray-300 rounded-sm focus:border-gray-400 h-10 px-3 transition-all duration-300 ease-out text-[15px]"
                                 autocomplete="off"
                                 {...register('email', { required: 'Email is required' })}
                             />
@@ -41,7 +40,7 @@ function Login() {
                                 <input
                                     type={isPasswordVisible ? 'text' : 'password'}
                                     id="password"
-                                    className="border-[1px] border-gray-300 rounded-sm focus:border-gray-400 py-2 pl-3 pr-10 transition-all duration-300 ease-out w-full h-full"
+                                    className="border-[1px] border-gray-300 rounded-sm focus:border-gray-400 h-10 pl-3 pr-10 transition-all duration-300 ease-out w-full text-[15px]"
                                     autocomplete="off"
                                     {...register('password', { required: 'Password is required' })}
                                 />
