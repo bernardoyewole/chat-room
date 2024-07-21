@@ -7,7 +7,7 @@ import axios from "axios";
 import { useAuth } from "../provider/AuthProvider";
 
 function Login() {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const { setToken } = useAuth();
 
@@ -68,7 +68,7 @@ function Login() {
                             <p className="text-[10px] leading-none text-red-500 h-2">{errors.password && `${errors.password.message}`}</p>
                         </div>
                         <div className="w-full flex justify-end">
-                            <a href="#" className="text-xs underline underline-offset-2 text-[#34b17d]">Forgot password?</a>
+                            <Link to='/forgotPassword' className="text-xs underline underline-offset-2 text-[#34b17d]">Forgot password?</Link>
                         </div>
                         <button type="submit" className="w-full bg-[#263238] text-white rounded-sm py-2 mt-4">Sign in</button>
                     </form>

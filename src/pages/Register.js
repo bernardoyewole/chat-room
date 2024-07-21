@@ -143,7 +143,7 @@ function Register() {
                         </div>
                         <button type="submit" className="w-full bg-[#263238] text-white rounded-sm py-2 mt-4">Sign Up</button>
                     </form>
-                    <div className="create-account">
+                    <div>
                         <p className="mt-4 text-center text-sm text-gray-500">
                             Already have an account?
                             <Link className="font-semibold leading-6 text-[#34b17d] pl-2" to='/login'>Sign in</Link>
