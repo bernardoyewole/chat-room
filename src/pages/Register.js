@@ -8,6 +8,8 @@ import axios from 'axios';
 function Register() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(null);
+
     const navigate = useNavigate();
 
     const togglePassword = () => {
@@ -29,7 +31,11 @@ function Register() {
                 }
             })
             .catch(err => {
-                console.log(err);
+                const duplicateUserName = err.response.data.DuplicateUserName;
+
+                if (duplicateUserName && duplicateUserName.length > 0) {
+                    setErrorMessage('An account exists with this email');
+                }
             });
     }
 
@@ -140,8 +146,9 @@ function Register() {
                                     </li>
                                 </ul>
                             </div>
+                            <p className="h-2 text-xs text-center text-red-600">{errorMessage && `${errorMessage}`}</p>
                         </div>
-                        <button type="submit" className="w-full bg-[#263238] text-white rounded-sm py-2 mt-4">Sign Up</button>
+                        <button type="submit" className="w-full bg-[#263238] text-white rounded-sm py-2 mt-2">Sign Up</button>
                     </form>
                     <div>
                         <p className="mt-4 text-center text-sm text-gray-500">

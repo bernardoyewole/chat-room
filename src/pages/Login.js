@@ -9,6 +9,7 @@ import { useAuth } from "../provider/AuthProvider";
 function Login() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(null);
     const { setToken } = useAuth();
 
     const togglePassword = () => {
@@ -17,7 +18,7 @@ function Login() {
 
     const navigate = useNavigate();
 
-    const onSubmit = data => {
+    const onSubmit = async (data) => {
         const trimmedData = {
             email: data.email.trim(),
             password: data.password.trim(),
@@ -31,7 +32,11 @@ function Login() {
                 }
             })
             .catch(err => {
-                console.log(err);
+                if (err.response.data.status === 401 && err.response.data.title === 'Unauthorized') {
+                    setErrorMessage('Invalid email or password');
+                } else {
+                    setErrorMessage('Some error occurred, try again')
+                }
             });
     }
 
@@ -41,6 +46,7 @@ function Login() {
                 <div className="bg-white p-6 rounded-md w-96">
                     <h1 className="text-2xl text-center">CHAT <span className="text-[#34b17d]">ROOM</span></h1>
                     <form className="pt-6" onSubmit={handleSubmit(onSubmit)}>
+                        <p className="h-2 text-xs text-center text-red-600">{errorMessage && `${errorMessage}`}</p>
                         <div className="flex flex-col gap-1 mb-2">
                             <label htmlFor="email" className="text-sm">Email</label>
                             <input
