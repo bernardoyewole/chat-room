@@ -3,19 +3,17 @@ import { RiGroupLine } from "react-icons/ri";
 import { TbMessage } from "react-icons/tb";
 import { FiHash } from "react-icons/fi";
 import { IoMdNotificationsOutline } from "react-icons/io";
-import { FiSearch } from "react-icons/fi";
 
 function Header() {
     return (
-        <header className="bg-white py-4">
+        <header className="bg-white h-[80px] leading-[80px]">
             <div className="container mx-auto flex justify-between items-center">
                 <div className="flex items-center gap-6 flex-1">
                     <div>
                         <GiDeathStar className="text-4xl text-blue-500" />
                     </div>
-                    <div className="relative">
-                        <input type="text" placeholder="Search..." className="h-full w-full pl-9 pr-4 py-2 text-sm border rounded-full focus:outline-none" />
-                        <FiSearch className="absolute inline left-3 top-[11.5px] text-gray-500" />
+                    <div>
+                        <input type="text" placeholder="Search..." className="pl-8 pr-4 py-2 text-sm border rounded-full focus:outline-none bg-[url('../images/search.png')] bg-no-repeat bg-[10px]" />
                     </div>
                 </div>
                 <nav className="flex items-center gap-2">
