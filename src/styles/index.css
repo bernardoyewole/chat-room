@@ -6,3 +6,25 @@
     width: min(100% - 30px, 1280px);
     margin-inline: auto;
 }
+
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #bcbcbc #f1f1f1;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 12px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #bcbcbc;
+    border-radius: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

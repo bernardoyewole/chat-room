@@ -18,19 +18,19 @@ function Header() {
                 </div>
                 <nav className="flex items-center gap-2">
                     <a className='cursor-pointer flex items-center gap-2 hover:bg-gray-100 rounded-3xl px-4 h-9 transition-all duration-300 ease-in-out'>
-                        <RiGroupLine className="text-blue-600" />
+                        <RiGroupLine className="text-blue-500" />
                         <span className="text-sm">Connections</span>
                     </a>
                     <a className='cursor-pointer flex items-center gap-2 hover:bg-gray-100 rounded-3xl px-4 h-9 transition-all duration-300 ease-in-out'>
-                        <TbMessage className="text-blue-600" />
+                        <TbMessage className="text-blue-500" />
                         <span className="text-sm">DMs</span>
                     </a>
                     <a className='cursor-pointer flex items-center gap-2 hover:bg-gray-100 rounded-3xl px-4 h-9 transition-all duration-300 ease-in-out'>
-                        <FiHash className="text-blue-600" />
+                        <FiHash className="text-blue-500" />
                         <span className="text-sm">Channels</span>
                     </a>
                     <a className='cursor-pointer flex items-center gap-2 hover:bg-gray-100 rounded-3xl px-4 h-9 transition-all duration-300 ease-in-out'>
-                        <IoMdNotificationsOutline className="text-blue-600 text-lg" />
+                        <IoMdNotificationsOutline className="text-blue-500 text-lg" />
                         <span className="text-sm">Notifications</span>
                     </a>
                 </nav>

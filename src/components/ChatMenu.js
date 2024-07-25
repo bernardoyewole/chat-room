@@ -1,3 +1,7 @@
+import { FaPlus } from "react-icons/fa6";
+import { TbDots } from "react-icons/tb";
+import { MdFilterList } from "react-icons/md";
+
 const users = [
     {
         id: 1,
@@ -61,42 +65,40 @@ const users = [
     }
 ];
 
-let favorites = users.filter(u => u.favorites);
-let otherUsers = users.filter(u => !u.favorites);
-
 function ChatMenu() {
     return (
-        <div className="h-full flex flex-col shrink-0 bg-white w-[24%] pb-4">
-            <div className="pl-6 font-semibold pb-5 pt-5 bg-inherit">
-                <h1>Chat Room</h1>
+        <section className="w-[30%] h-full border-r-[1px] border-b-gray-200">
+            <div className="h-[9%] w-full flex justify-between items-center px-5 border-b-[1px] border-b-gray-200">
+                <h1>Message</h1>
+                <div className="flex gap-6 items-center">
+                    <div className="p-2 rounded-[50%] border-[1px] border-gray-400">
+                        <FaPlus className="text-xs" />
+                    </div>
+                    <TbDots />
+                </div>
             </div>
-            <div className="overflow-y-auto scrollbar">
-                {favorites.length > 0 &&
-                    <div className="flex flex-col mb-5">
-                        <p className="text-[12px] text-[#767978] pl-6 mb-1 mt-2">FAVORITES</p>
-                        {favorites.map(user => (
-                            <div key={user.id} className="h-[45px] flex items-center gap-2 pl-6 hover:bg-gray-100 hover:cursor-pointer">
-                                <div className="h-7 w-7">
-                                    <img src={user.avatar} className="rounded-[50%]" />
-                                </div>
-                                <p className="text-[13px]">{user.name}</p>
-                            </div>
-                        ))}
-                    </div>}
-                {otherUsers.length > 0 &&
-                    <div className="flex flex-col">
-                        <p className="text-[12px] text-[#767978] pl-6 mb-1">DIRECT MESSAGES</p>
-                        {favorites.map(user => (
-                            <div key={user.id} className="h-[45px] flex items-center gap-2 pl-6 hover:bg-gray-100 hover:cursor-pointer">
-                                <div className="h-7 w-7">
-                                    <img src={user.avatar} className="rounded-[50%]" />
-                                </div>
-                                <p className="text-[13px]">{user.name}</p>
-                            </div>
-                        ))}
-                    </div>}
+            <div className="h-[8%] flex justify-between items-center px-5 border-b-[1px] border-b-gray-200">
+                <FaPlus className="shrink-0 text-gray-500" />
+                <input placeholder="Search message..." className="text-sm font-normal w-[70%]" />
+                <MdFilterList className="shrink-0" />
             </div>
-        </div>
+            <div className="h-[83%] overflow-y-auto custom-scrollbar">
+                {users.map(user => (
+                    <div key={user.id} className={`h-24 flex items-center gap-4 px-5 border-l-2 transition-all duration-300 ease-in-out border-transparent hover:bg-gray-100 hover:border-l-blue-500 cursor-pointer ${users[users.length - 1].id !== user.id ? 'border-b-[1px] border-b-gray-200' : ''}`}>
+                        <div className="h-10 w-10 shrink-0">
+                            <img src={user.avatar} className="rounded-[50%]" />
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <div className="flex justify-between items-center shrink-0">
+                                <p className="text-sm">{user.name}</p>
+                                <p className="text-xs text-gray-500">06 Jan</p>
+                            </div>
+                            <p className="text-[13px] text-gray-500">Hey man, wassup, send me the Ps!</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
     )
 }
 
