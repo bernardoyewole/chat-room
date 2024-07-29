@@ -27,6 +27,10 @@ function Register() {
         axios.post('https://localhost:44315/api/Account/register', trimmedData)
             .then(res => {
                 if (res.data.message === "User registered successfully" && res.status === 200) {
+                    if (res.headers.isfirsttimeuser === "true") {
+                        localStorage.setItem(`${trimmedData.email}`, 'isFirstTimeUser');
+                    }
+
                     navigate('/accountConfirmation', { replace: true });
                 }
             })

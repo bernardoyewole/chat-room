@@ -24,11 +24,18 @@ function Login() {
             password: data.password.trim(),
         };
 
-        axios.post('https://localhost:44315/login?useCookies=false', trimmedData)
+        axios.post('https://localhost:44315/login', trimmedData)
             .then(res => {
-                if (res.data.accessToken.length > 0) {
+                if (res.data.accessToken.length > 0) { //check 200
                     setToken(res.data.accessToken, res.data.refreshToken, res.data.expiresIn);
-                    navigate('/');
+
+                    const isFirstTimeUserData = localStorage.getItem(`${trimmedData.email}`) === "isFirstTimeUser";
+
+                    if (isFirstTimeUserData === true) {
+                        navigate(`/createProfile/${trimmedData.email}`);
+                    } else {
+                        navigate('/');
+                    }
                 }
             })
             .catch(err => {

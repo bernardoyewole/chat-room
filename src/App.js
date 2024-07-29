@@ -7,18 +7,20 @@ import ForgotPassword from './pages/ForgotPassword';
 import PrivateRoute from './components/PrivateRoute';
 import AuthProvider from './provider/AuthProvider';
 import ResetPassword from './pages/ResetPassword';
+import CreateProfile from './pages/CreateProfile';
 
 function App() {
   return (
     <AuthProvider>
       <Router>
         <Routes>
-          {/* <Route path='/' element={<PrivateRoute />}> */}
+          <Route path='/' element={<PrivateRoute />}>
             <Route path='/' element={<Home />} />
-          {/* </Route> */}
+          </Route>
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/accountConfirmation' element={<AccountConfirmation />} />
+          <Route path='/createProfile/:userEmail' element={<CreateProfile />} />
           <Route path='/forgotPassword' element={<ForgotPassword />} />
           <Route path='/resetPassword' element={<ResetPassword />} />
         </Routes>
