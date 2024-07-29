@@ -3,8 +3,41 @@ import { RiGroupLine } from "react-icons/ri";
 import { TbMessage } from "react-icons/tb";
 import { FiHash } from "react-icons/fi";
 import { IoMdNotificationsOutline } from "react-icons/io";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 function Header() {
+    const { userEmail } = useParams();
+
+    const [userPicture, setUserPicture] = useState(null);
+    const [displayName, setDisplayName] = useState(null);
+
+    const updateUserInfo = () => {
+        console.log(userEmail);
+        axios.get(`https://localhost:44315/api/User/${userEmail}`)
+            .then(res => {
+                if (res.status === 200) {
+                    // console.log(res.data);
+                    setDisplayName(res.data.displayName);
+                    handleImage(res.data.picture);
+                }
+            })
+            .catch(err => {
+                console.log(err.response);
+                // setErrorMessage('Some error occurred, try again');
+            });
+    }
+
+    function handleImage(base64String) {
+        setUserPicture(<img src={`data:image/jpeg;base64,${base64String}`} alt="" className="w-full h-full object-cover rounded-[50%]" />);
+    }
+
+
+    useEffect(() => {
+        updateUserInfo();
+    }, []);
+
     return (
         <header className="bg-white h-[80px] leading-[80px]">
             <div className="container mx-auto flex justify-between items-center">
@@ -35,10 +68,9 @@ function Header() {
                     </a>
                 </nav>
                 <div className="flex items-center flex-1 justify-end">
-                    <div className="w-10 h-10 bg-gray-200 rounded-full overflow-hidden">
-                        <img src="https://via.placeholder.com/150" alt="User avatar" className="w-full h-full object-cover" />
-                    </div>
-                    <span className="ml-2 text-gray-700">Erşad Başbağ</span>
+                    <div className="w-12 h-12">
+                        {userPicture ? userPicture : <img src="https://via.placeholder.com/150" alt="User avatar" className="w-full h-full object-cover rounded-[50%]" />}                    </div>
+                    <span className="ml-2 text-gray-700">{displayName ? displayName : 'placeholder'}</span>
                 </div>
             </div>
         </header>

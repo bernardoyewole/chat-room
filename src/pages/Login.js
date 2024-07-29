@@ -34,7 +34,7 @@ function Login() {
                     if (isFirstTimeUserData === true) {
                         navigate(`/createProfile/${trimmedData.email}`);
                     } else {
-                        navigate('/');
+                        navigate(`/${trimmedData.email}`);
                     }
                 }
             })
