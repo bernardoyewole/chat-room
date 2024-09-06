@@ -4,6 +4,8 @@
 
 ChatRoom is a real-time chat application developed using **React** for the frontend and **ASP.NET Core Web API** for the backend. It allows users to communicate seamlessly through various channels, manage friends, and update their profiles. The application is powered by **SignalR** for real-time communication and features robust **Authentication and Authorization** to ensure a secure experience.
 
+Check out the API serving this application -  [Chat Room API](https://github.com/bernardoyewole/chatRoomAPI)
+
 ## Features
 
 - **Real-Time Communication**: Leverage SignalR for instant messaging, channel joining, and friend management.
